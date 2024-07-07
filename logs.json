@@ -1,2 +1,2 @@
 { "logs": [] } 
-{ "category": "Empty Recycle Bin", "path": "C:\$Recycle.Bin", "spaceCleared": 0, "unit": "MB", "timestamp": "Sun 07/07/2024T12:50:38.85" } 
+{ "category": "Clean Temporary Files", "path": "C:\Users\erasm\AppData\Local\Temp", "spaceCleared": 0, "unit": "MB", "timestamp": "Sun 07/07/2024T13:14:13.31" } 
