@@ -47,9 +47,16 @@ For any issues or suggestions, please contact:
 
 
 
-## FIXES:
-- Empty Recycle Bin not working
--fixed some bugs in the auto clean option
+ ## ===============================
+ ## PurgeMaster Cleanup Wizard V1.0.03
+ ## ===============================
 
-## CHANGES:
+FIXES:
+
+- Empty Recycle Bin not working
+
+-Fixed some bugs in the auto clean option
+
+CHANGES:
+
 -The program now uses Powerschell by default instead of CMD this is done to fix some restrictions with CDM
