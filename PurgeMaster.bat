@@ -22,8 +22,7 @@ echo ===============================
 echo            Support
 echo ===============================
 echo For support, please contact:
-echo Email: erasmus_kraneburg@outlook.com
-echo Discord: iiTzMythic
+echo Github: https://github.com/Flockers-Design/WindowsPurgeMaster
 echo.
 
 :MENU

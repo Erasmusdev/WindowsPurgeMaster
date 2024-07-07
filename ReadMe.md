@@ -42,5 +42,4 @@ The PurgeMaster Cleanup Wizard is a command-line utility designed to streamline 
 ## Support
 
 For any issues or suggestions, please contact:
-- Email: erasmus_kraneburg@outlook.com
-- Discord: iiTzMythic
+- Github: https://github.com/Flockers-Design/WindowsPurgeMaster
