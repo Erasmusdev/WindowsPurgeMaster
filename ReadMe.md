@@ -48,7 +48,7 @@ For any issues or suggestions, please contact:
 
 
  ## ===============================
- ## PurgeMaster Cleanup Wizard V1.0.03
+ ## Update V1.0.03
  ## ===============================
 
 FIXES:
