@@ -14,7 +14,7 @@ The PurgeMaster Cleanup Wizard is a command-line utility designed to streamline 
 ## Usage
 
 1. **Run the Program**:
-   - **Important**: Run `PurgeMaster.bat` as an administrator. Right-click on `PurgeMaster.bat` and select "Run as administrator" from the context menu.
+   - **Important**: Run `PurgeMaster.bat` as NON administrator.
 
 2. **Select Options**:
    - Double-click on `PurgeMaster.bat` to launch the program.
@@ -43,3 +43,8 @@ The PurgeMaster Cleanup Wizard is a command-line utility designed to streamline 
 
 For any issues or suggestions, please contact:
 - Github: https://github.com/Flockers-Design/WindowsPurgeMaster
+
+
+## Known Bugs
+
+Empty Recycle Bin is currently not working !

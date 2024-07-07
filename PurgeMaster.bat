@@ -27,15 +27,15 @@ echo.
 
 :MENU
 echo Please select an option:
-echo 1. Clean Temporary Files
+echo 1. Clean Temporary Files 
 echo 2. Clean Prefetch Files
-echo 3. Empty Recycle Bin
+echo 3. Empty Recycle Bin (Bugged Currently not working)
 echo 4. Clean Windows Update Cache
 echo 5. Clean Temporary Internet Files
-echo 6. Delete System Error Memory Dump Files (Option not implemented)
-echo 7. Delete Temporary Installation Files (Option not implemented)
-echo 8. Clean Registry (Option not implemented)
-echo 9. Clean Browser Cache and History (Option not implemented)
+echo 6. Delete System Error Memory Dump Files (Option not implemented yet)
+echo 7. Delete Temporary Installation Files (Option not implemented yet)
+echo 8. Clean Registry (Option not implemented yet)
+echo 9. Clean Browser Cache and History (Option not implemented yet)
 echo 10. Clean All (Run Autocleaner.bat)
 echo 11. Exit
 echo.

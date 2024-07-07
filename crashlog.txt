@@ -1,9 +1,9 @@
 Crash Log 
 ------------------- 
  
-Error occurred in option: 10 
+Error occurred in option: 3 
  
 Last command: D:\VSProjects\WindowsPurgeMaster\PurgeMaster.bat  
 Script location: D:\VSProjects\WindowsPurgeMaster\ 
-Date/Time: Sun 07/07/2024 11:15:04.71 
+Date/Time: Sun 07/07/2024 12:50:44.47 
  
