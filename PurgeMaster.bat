@@ -1,5 +1,5 @@
 @echo off
-title PurgeMaster Cleanup Wizard
+title PurgeMaster Cleanup Wizard (Pre Release)
 
 :: Initialize crash log file (overwrite mode)
 set "crashlog=%~dp0\crashlog.txt"
@@ -14,10 +14,13 @@ echo { "logs": [] } > "%logs%"
 :: Determine current user's profile directory
 set "USERPROFILE_DIR=%USERPROFILE%"
 
+:: Change text color to blue
+color 1F
+
 :START
 cls
 echo ===============================
-echo   PurgeMaster Cleanup Wizard V1.0.03
+echo   PurgeMaster Cleanup Wizard v1.0.04
 echo ===============================
 echo            Support
 echo ===============================
@@ -31,13 +34,13 @@ echo 1. Clean Temporary Files
 echo 2. Clean Prefetch Files
 echo 3. Empty Recycle Bin
 echo 4. Clean Windows Update Cache
-echo 5. Clean Temporary Internet Files
-echo 6. Delete System Error Memory Dump Files (Option not implemented)
-echo 7. Delete Temporary Installation Files (Option not implemented)
-echo 8. Clean Registry (Option not implemented)
-echo 9. Clean Browser Cache and History (Option not implemented)
+echo 5. Clean Temporary Internet Files (Testing Phase)
+echo 6. Delete System Error Memory Dump Files (Testing Phase)
+echo 7. Delete Temporary Installation Files (Testing Phase)
+echo 8. Clean Registry (Option not implemented yet)
+echo 9. Clean Browser Cache and History (Option not implemented yet)
 echo 10. Clean All (Automatically confirm with 'Y' for all)
-echo 11. Exit
+echo 11. Exit (CTRL+C)
 echo.
 
 set /p option=Enter the number of your choice (1-11): 
@@ -63,12 +66,10 @@ if %option%==5 (
     call :confirm_cleanup "Clean Temporary Internet Files" "%userprofile%\AppData\Local\Microsoft\Windows\INetCache"
 )
 if %option%==6 (
-    echo Option 6: Delete System Error Memory Dump Files (Not implemented)
-    pause
+    call :confirm_cleanup "Delete System Error Memory Dump Files" "%SystemRoot%\Minidump"
 )
 if %option%==7 (
-    echo Option 7: Delete Temporary Installation Files (Not implemented)
-    pause
+    call :confirm_cleanup "Delete Temporary Installation Files" "%SystemRoot%\Temp"
 )
 if %option%==8 (
     echo Option 8: Clean Registry (Not implemented)
@@ -118,12 +119,27 @@ if /i "%choice%"=="Y" (
     echo Performing %action%...
     if "%action%"=="Empty Recycle Bin" (
         "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+        set "spaceCleared=0"
     ) else (
+        :: Calculate size before cleanup
+        set "beforeSize=0"
+        for /f "tokens=3" %%a in ('"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "(Get-ChildItem -Recurse -Force '%path%' | Measure-Object -Property Length -Sum).Sum"') do set /a beforeSize+=%%a
+
+        :: Perform the cleanup action
         "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "Remove-Item -Recurse -Force '%path%'" >nul 2>&1
+
+        :: Calculate size after cleanup
+        set "afterSize=0"
+        for /f "tokens=3" %%a in ('"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "(Get-ChildItem -Recurse -Force '%path%' | Measure-Object -Property Length -Sum).Sum"') do set /a afterSize+=%%a
+
+        :: Calculate space cleared
+        set /a spaceCleared=beforeSize - afterSize
+
+        :: Create the directory again to ensure it's not deleted
         mkdir "%path%" >nul 2>&1
     )
     echo %action% completed.
-    call :log_cleanup "%action%" "%path%" "MB"
+    call :log_cleanup "%action%" "%path%" "%spaceCleared%"
 ) else (
     echo %action% canceled.
 )
@@ -134,33 +150,17 @@ goto :eof
 :log_cleanup
 set "category=%~1"
 set "path=%~2"
-set "unit=%~3"
+set "spaceCleared=%~3"
+set "unit=Bytes"
 
 :: Get current date/time in ISO 8601 format
 for /f "usebackq tokens=1,2 delims=." %%a in (`echo %time%`) do (
     set "timestamp=%date%T%%a.%%b"
 )
 
-:: Calculate size of cleaned directory
-set "beforeSize=0"
-if "%category%"=="Empty Recycle Bin" (
-    :: Skip size calculation for Recycle Bin
-    set "spaceCleared=0"
-) else (
-    for /f "tokens=3" %%a in ('"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "(Get-ChildItem -Recurse -Force '%path%' | Measure-Object -Property Length -Sum).Sum"') do set /a beforeSize+=%%a
-
-    :: Perform the cleanup action
-    "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "Remove-Item -Recurse -Force '%path%'" >nul 2>&1
-
-    :: Calculate size after cleanup
-    set "afterSize=0"
-    for /f "tokens=3" %%a in ('"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "(Get-ChildItem -Recurse -Force '%path%' | Measure-Object -Property Length -Sum).Sum"') do set /a afterSize+=%%a
-
-    :: Calculate space cleared
-    set /a spaceCleared=beforeSize - afterSize
-)
-
 :: Log to logs.json
-echo { "category": "%category%", "path": "%path%", "spaceCleared": %spaceCleared%, "unit": "%unit%", "timestamp": "%timestamp%" } >> "%logs%"
+(
+    echo { "category": "%category%", "path": "%path%", "spaceCleared": %spaceCleared%, "unit": "%unit%", "timestamp": "%timestamp%" }
+) >> "%logs%"
 
 goto :eof
