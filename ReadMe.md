@@ -16,23 +16,18 @@ The PurgeMaster Cleanup Wizard is a command-line utility designed to streamline 
 1. **Run the Program**:
    - **Important**: Run PurgeMaster.bat as an administrator. Right-click on PurgeMaster.bat and select "Run as administrator" from the context menu.
 
-
 2. **Select Options**:
-   - Double-click on `PurgeMaster.bat` to launch the program.
-   - Follow the on-screen prompts to select the cleanup options.
-
-3. **Select Options**:
    - Choose an option from the menu (1-10).
    - For `Clean All` (Option 10), it will execute `Autocleaner.bat` located in the `addons` folder.
 
-4. **Confirmation**:
+3. **Confirmation**:
    - For individual options, confirm by typing `Y` or `N`.
    - For `Clean All`, it automatically confirms with `Y`.
 
-5. **View Logs**:
+4. **View Logs**:
    - After each cleanup, view the detailed logs in `logs.json` to see space cleared and timestamps.
 
-6. **Exit**:
+5. **Exit**:
    - Choose Option 11 to exit the program.
 
 ## Notes
@@ -43,7 +38,7 @@ The PurgeMaster Cleanup Wizard is a command-line utility designed to streamline 
 ## Support
 
 For any issues or suggestions, please contact:
-- Github: https://github.com/Flockers-Design/WindowsPurgeMaster/issues
+- Github: https://github.com/Flockers-Design/WindowsPurgeMaster
 
 
 
@@ -60,3 +55,23 @@ FIXES:
 CHANGES:
 
 - The program now uses Powerschell by default instead of CMD this is done to fix some restrictions with CDM
+
+ ## ===============================
+ ## Update V1.0.04
+ ## ===============================
+
+ADDED:
+
+- Delete System Error Memory Dump Files
+
+- Delete Temporary Installation Files 
+
+- Clean Temporary Internet Files
+
+(THESE OPTIONS ARE NOT ADDED TO THE AUTO CLEAN OPTION THIS WILL BE ADDED AFTER ITS FULLY TESTED)
+
+CHANGES:
+
+- Changed the way log reports are done
+- Did some more chasnges to the crash reports
+- Changed the terminal color
