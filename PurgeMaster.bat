@@ -48,7 +48,7 @@ echo %green%============================================================%reset%
 echo            Support
 echo ===============================
 echo For support, please contact:
-echo Github: https://github.com/Flockers-Design/WindowsPurgeMaster
+echo Github: https://github.com/Erasmusdev/WindowsPurgeMaster
 echo.
 
 :MENU
