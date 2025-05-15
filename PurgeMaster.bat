@@ -42,7 +42,7 @@ SET "reset=%ESC%[0m"
 :START
 cls
 echo %green%============================================================%reset%
-echo %green%          PurgeMaster Cleanup Wizard v1.0.05 (Pre Release)       %reset%
+echo %green%          PurgeMaster Cleanup Wizard v1.0.06 (Pre Release)       %reset%
 echo %green%                  Copyright Flockers Design                     %reset%
 echo %green%============================================================%reset%
 echo            Support
