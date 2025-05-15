@@ -16,18 +16,23 @@ The PurgeMaster Cleanup Wizard is a command-line utility designed to streamline 
 1. **Run the Program**:
    - **Important**: Run PurgeMaster.bat as an administrator. Right-click on PurgeMaster.bat and select "Run as administrator" from the context menu.
 
+
 2. **Select Options**:
+   - Double-click on `PurgeMaster.bat` to launch the program.
+   - Follow the on-screen prompts to select the cleanup options.
+
+3. **Select Options**:
    - Choose an option from the menu (1-10).
    - For `Clean All` (Option 10), it will execute `Autocleaner.bat` located in the `addons` folder.
 
-3. **Confirmation**:
+4. **Confirmation**:
    - For individual options, confirm by typing `Y` or `N`.
    - For `Clean All`, it automatically confirms with `Y`.
 
-4. **View Logs**:
+5. **View Logs**:
    - After each cleanup, view the detailed logs in `logs.json` to see space cleared and timestamps.
 
-5. **Exit**:
+6. **Exit**:
    - Choose Option 11 to exit the program.
 
 ## Notes
@@ -75,3 +80,29 @@ CHANGES:
 - Changed the way log reports are done
 - Did some more chasnges to the crash reports
 - Changed the terminal color
+
+ ## ===============================
+ ## Update V1.0.06
+ ## ===============================
+
+FIXES:
+Resolved PowerShell path issues causing installer downloads (Core Temp, Revo Uninstaller) to fail on some systems.
+
+Updated installation addons to use the full PowerShell executable path (C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe) for reliable downloads.
+
+Improved error handling for downloading and launching installers.
+
+ADDED:
+Basic implementations for options:
+
+Clean Registry (Option 8)
+
+Clean Browser Cache and History (Option 9)
+(Note: These are basic placeholders and will be expanded in future updates.)
+
+CHANGES:
+Installer scripts (InstallCoreTempAddon.bat and RevoUninstaller.bat) now explicitly specify PowerShell path for better compatibility.
+
+Refined batch script flow for better user experience and error feedback.
+
+Minor fixes in cleanup confirmations to reduce unnecessary key presses.
